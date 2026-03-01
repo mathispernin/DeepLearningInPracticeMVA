@@ -2,11 +2,16 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
 
-from torch.utils.data import DataLoader, TensorDataset
 def precompute_features(
     model: nn.Module, dataset: torch.utils.data.Dataset, device: torch.device
 ) -> torch.utils.data.Dataset:
-
+    """Precomputes the features from the ResNet model for the given dataset.
+    
+    Args:
+        model: The ResNet model with the final layer replaced by Identity.
+        dataset: The dataset for which to precompute features.
+        device: The device (CPU or GPU) to perform computations on.
+    """
     # Set the model to evaluation mode
     model.eval()
     model = model.to(device)
